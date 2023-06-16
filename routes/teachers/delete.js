@@ -5,7 +5,7 @@ const teachers = require('../../model/teachers');
 
 
 // Define routes for teachers
-router.post('/add', async function (req, res) {
+router.delete('/delete', async function (req, res) {
 
     try {
         const val = new Validator(req.body, {
@@ -23,19 +23,18 @@ router.post('/add', async function (req, res) {
 
         } else {
 
-            teachers.where({id: req.body.id}).updateOne({
+            teachers.findOneAndRemove({
                 id: req.body.id,
                 
             }, function (error) {
                 if (! error) {
-                    return res.status(200).json({"status": 200, "message": "Updated"})
+                    return res.status(200).json({"status": 200, "message": "Deleted"})
                 } else {
                     return res.status(500).json({"status": 500, "message": "not update"})
                     
                 }
                 
             });
-            return res.status(200).json({"status": 200, "message": "ok"})
         }
 
     } catch (error) {
