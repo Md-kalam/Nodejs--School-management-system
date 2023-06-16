@@ -25,7 +25,7 @@ router.delete('/delete', async function (req, res) {
             if (! error) {
                 return res.status(200).json({"status": 200, "message": "Deleted"})
             } else {
-                return res.status(500).json({"status": 500, "message": "internal error"})
+                return res.status(500).json({"status": 500, "message": "not update"})
                 
             }
         });
