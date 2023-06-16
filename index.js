@@ -14,7 +14,8 @@ app.use('/public', publicAccess_API);
 
 // Public Access API
 const privateAccess_API = require('./routes/private_access');
-app.use('/private', privateAccess_API);
+const middlewarePrivate = require('./middleware/token_validator');
+app.use('/private',middlewarePrivate, privateAccess_API);
 
 
 
