@@ -4,7 +4,7 @@ const router = express.Router();
 const students = require('../../model/students');
 
 // Define routes for students
-router.patch('/update', async function (req, res) {
+router.delete('/delete', async function (req, res) {
 
     try { 
         const val = new Validator(req.body, {
@@ -17,12 +17,12 @@ router.patch('/update', async function (req, res) {
 
         } else { 
    
-            students.where({id: req.body.id}).updateOne({
+            students.findOneAndRemove({
                 id: req.body.id,
                 
             }, function (error) {
                 if (! error) {
-                    return res.status(200).json({"status": 200, "message": "Updated"})
+                    return res.status(200).json({"status": 200, "message": "Deleted"})
                 } else {
                     return res.status(500).json({"status": 500, "message": "not update"})
                     
