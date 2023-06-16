@@ -32,7 +32,7 @@ const students = require('../model/students');
             
         }
     } catch (err) {
-        return res.status(500).json({status: 5000, message: 'internal server error', error: err.message})
+        return res.status(500).json({status: 500, message: 'internal server error', error: err.message})
 
     }
 }
