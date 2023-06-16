@@ -9,7 +9,7 @@ const students = require('../model/students');
             return res.status(401).json({status: 401, message: 'token not found'})
 
         } else { // token extract
-           jwt.verify(token, process.env.JWT_KEY, async function(err, verifiedUser) {
+           jwt.verify(token, process.env.JWT_KEY, async function(err, verifiedStudent) {
                 if (err) {
             return res.status(401).json({status: 401, message: 'token is invalid'})
                  
