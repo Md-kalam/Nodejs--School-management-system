@@ -5,7 +5,7 @@ const teachers = require('../../model/teachers');
 
 
 // Define routes for teachers
-router.post('/add', async function (req, res) {
+router.patch('/update', async function (req, res) {
 
     try {
         const val = new Validator(req.body, {
@@ -30,9 +30,13 @@ router.post('/add', async function (req, res) {
                 email: req.body.grade,
                 select_District: req.body.select_District,
                 select_School: req.body.select_School,
-                
+            }, function(err) {
+                if (! err) {
+                 return res.status(200).json({"status": 200, "message": "Updated"})    
+                } else {
+            return res.status(404).json({"status": 404, "message": "not update"})
+        }
             });
-            return res.status(200).json({"status": 200, "message": "ok"})
         }
 
     } catch (error) {
